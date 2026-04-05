@@ -81,7 +81,7 @@ router.patch("/users/:id", authenticate, requireRole("admin"), async (req: AuthR
   const user = await User.findOneAndUpdate(
     { _id: params.data.id, isDeleted: false },
     { $set: parsed.data },
-    { new: true }
+    { returnDocument: "after" }
   );
 
   if (!user) {
@@ -101,7 +101,7 @@ router.delete("/users/:id", authenticate, requireRole("admin"), async (req: Auth
   const user = await User.findOneAndUpdate(
     { _id: params.data.id, isDeleted: false },
     { $set: { isDeleted: true } },
-    { new: true }
+    { returnDocument: "after" }
   );
 
   if (!user) {

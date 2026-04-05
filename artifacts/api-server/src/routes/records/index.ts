@@ -117,7 +117,7 @@ router.patch("/records/:id", authenticate, requireRole("analyst", "admin"), asyn
   const record = await Record.findOneAndUpdate(
     { _id: params.data.id, isDeleted: false },
     { $set: update },
-    { new: true }
+    { returnDocument: "after" }
   );
 
   if (!record) {
@@ -137,7 +137,7 @@ router.delete("/records/:id", authenticate, requireRole("admin"), async (req: Au
   const record = await Record.findOneAndUpdate(
     { _id: params.data.id, isDeleted: false },
     { $set: { isDeleted: true } },
-    { new: true }
+    { returnDocument: "after" }
   );
 
   if (!record) {
