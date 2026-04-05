@@ -24,3 +24,9 @@ expertMode = true
 [postMerge]
 path = "scripts/post-merge.sh"
 timeoutMs = 20000
+
+[userenv]
+
+[userenv.shared]
+MONGODB_URI = "mongodb+srv://hatakekakashithecopyninja028_db_user:kVsJDfTVk395wZtU@cluster0.gfy3cuf.mongodb.net/financedb"
+JWT_SECRET = "MYSUPERKEY"
