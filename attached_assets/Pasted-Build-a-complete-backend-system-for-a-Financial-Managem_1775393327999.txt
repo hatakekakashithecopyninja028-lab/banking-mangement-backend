@@ -1,0 +1,170 @@
+Build a complete backend system for a **Financial Management Dashboard** using modern best practices.
+
+### Tech Stack
+
+* Backend: Node.js (Express) OR FastAPI (Python)
+* Database: MongoDB (Mongoose) OR PostgreSQL (ORM like Prisma/SQLAlchemy)
+* Authentication: JWT-based authentication
+* Follow clean architecture and modular structure
+
+---
+
+## Core Features
+
+### 1. User and Role Management
+
+Implement a user system with role-based access control.
+
+Requirements:
+
+* Create, update, delete users
+* Assign roles: Viewer, Analyst, Admin
+* Store fields: name, email, password (hashed), role, status (active/inactive)
+* Implement login and signup APIs
+* Generate JWT tokens on login
+
+Role Permissions:
+
+* Viewer → Read-only dashboard access
+* Analyst → View records + analytics
+* Admin → Full access (CRUD users + records)
+
+---
+
+### 2. Financial Records Management
+
+Create APIs for managing financial records.
+
+Each record should include:
+
+* amount (number)
+* type (income / expense)
+* category (string)
+* date (timestamp)
+* notes (optional string)
+* createdBy (user reference)
+
+APIs:
+
+* Create record
+* Get all records (with filtering)
+* Update record
+* Delete record
+
+Filtering:
+
+* By date range
+* By category
+* By type (income/expense)
+
+---
+
+### 3. Dashboard Summary APIs
+
+Create aggregated endpoints:
+
+* Total income
+* Total expenses
+* Net balance
+* Category-wise totals
+* Recent transactions (last 5)
+* Monthly summary (group by month)
+
+---
+
+### 4. Access Control (IMPORTANT)
+
+Implement middleware / dependency:
+
+* Verify JWT token
+* Check user role
+* Restrict routes:
+
+  * Viewer → only GET dashboard
+  * Analyst → GET records + dashboard
+  * Admin → full CRUD access
+
+---
+
+### 5. Validation & Error Handling
+
+* Validate all inputs (use Joi / Pydantic)
+* Return proper HTTP status codes:
+
+  * 400 → Bad request
+  * 401 → Unauthorized
+  * 403 → Forbidden
+  * 404 → Not found
+* Handle edge cases properly
+
+---
+
+### 6. Database & Models
+
+Design schemas:
+
+User Model:
+
+* id
+* name
+* email
+* password
+* role
+* status
+* createdAt
+
+Record Model:
+
+* id
+* amount
+* type
+* category
+* date
+* notes
+* userId
+
+---
+
+## Optional Enhancements (Bonus)
+
+* Pagination for records
+* Search functionality
+* Soft delete (isDeleted flag)
+* Rate limiting
+* API documentation (Swagger/OpenAPI)
+* Unit tests
+
+---
+
+## Project Structure (Example)
+
+For Node:
+
+* controllers/
+* models/
+* routes/
+* middleware/
+* utils/
+* config/
+
+For FastAPI:
+
+* routers/
+* models/
+* schemas/
+* services/
+* dependencies/
+
+---
+
+## Output Requirements
+
+* Provide complete working code
+* Include environment variables setup (.env)
+* Include sample API routes
+* Include instructions to run the project
+* Write clean, readable, beginner-friendly code
+
+---
+
+Make sure the project is production-ready, well-structured, and follows best practices.
