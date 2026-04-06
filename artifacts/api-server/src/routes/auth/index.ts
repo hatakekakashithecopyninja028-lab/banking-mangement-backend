@@ -25,6 +25,12 @@ router.post("/auth/signup", async (req, res): Promise<void> => {
 
   const { name, email, password, role } = parsed.data;
 
+  // Security: Only allow viewer/analyst during signup, block admin
+  if (role === 'admin') {
+    res.status(401).json({ error: 'Admin role can only be assigned by administrators' });
+    return;
+  }
+
   const existing = await User.findOne({ email, isDeleted: false });
   if (existing) {
     res.status(409).json({ error: "Email already exists" });

@@ -17,6 +17,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import AdminCard from "./Admincard";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -52,7 +53,7 @@ export default function Login() {
   };
 
   return (
-    <div className="flex h-screen w-full items-center justify-center bg-muted/30">
+    <div className="min-h-screen w-full flex flex-col md:flex-row items-center justify-center bg-muted/30 p-6 relative">
       <Card className="w-full max-w-md shadow-lg border-border/50">
         <CardHeader className="space-y-2 text-center pb-6">
           <CardTitle className="text-3xl font-bold tracking-tight text-primary">FinCommand</CardTitle>
@@ -68,7 +69,7 @@ export default function Login() {
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input placeholder="admin@example.com" {...field} />
+                      <Input placeholder="admin@gmail.com || viewer@gmail.com" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -81,7 +82,7 @@ export default function Login() {
                   <FormItem>
                     <FormLabel>Password</FormLabel>
                     <FormControl>
-                      <Input type="password" placeholder="••••••" {...field} />
+                      <Input type="password" placeholder="admin123 || viewer123" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -100,6 +101,9 @@ export default function Login() {
           </div>
         </CardContent>
       </Card>
+      <div className="absolute bottom-8 left-8 md:bottom-6 md:left-6 max-w-sm">
+        <AdminCard />
+      </div>
     </div>
-  );
+  ); 
 }

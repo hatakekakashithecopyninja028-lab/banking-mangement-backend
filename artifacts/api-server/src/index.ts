@@ -2,7 +2,7 @@ import app from "./app.js";
 import { logger } from "./lib/logger.js";
 import { connectDB } from "./lib/db.js";
 
-const rawPort = process.env["PORT"];
+const rawPort = process.env.PORT || process.env.npm_config_port;
 
 if (!rawPort) {
   throw new Error(
